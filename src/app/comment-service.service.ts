@@ -4,6 +4,8 @@ import { Http, Response } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 
+import {Comment} from './comment';
+
 @Injectable()
 export class CommentServiceService {
   private commentUrl = 'https://jsonplaceholder.typicode.com/comments/';
@@ -16,5 +18,10 @@ export class CommentServiceService {
               .map(response => response.json())
               .catch(error => Observable.throw(error.json.error || 'serve error'));
 
+  }
+  postComments(newComment: Comment) {
+    return this._http.post(this.commentUrl, newComment)
+                 .map(response => response.json())
+                 .catch(error => Observable.throw(error.json.error || 'server error'));
   }
 }
