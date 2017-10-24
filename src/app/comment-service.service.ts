@@ -8,5 +8,13 @@ import 'rxjs/Rx';
 export class CommentServiceService {
   private commentUrl = 'https://jsonplaceholder.typicode.com/comments/';
 
-  constructor(_http: Http) {}
+  constructor(private _http: Http) {}
+
+
+  getComments(): Observable<Comment> {
+    return this._http.get(this.commentUrl)
+              .map(response => response.json())
+              .catch(error => Observable.throw(error.json.error || 'serve error'));
+
+  }
 }
