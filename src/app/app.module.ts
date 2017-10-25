@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { Http, HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { CommentBoxComponent } from './comment-box/comment-box.component';
-import {CommentServiceService} from './comment-service.service';
 
+import {CommentServiceService} from './comment-service.service';
+import { CommentsComponent } from './comments/comments.component';
+import { CommentBoxComponent} from './comments/comment-box/comment-box.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CommentBoxComponent
+    CommentBoxComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

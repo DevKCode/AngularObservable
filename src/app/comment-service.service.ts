@@ -24,4 +24,9 @@ export class CommentServiceService {
                  .map(response => response.json())
                  .catch(error => Observable.throw(error.json.error || 'server error'));
   }
+  deleteCommment(id: string) {
+    return this._http.delete(this.commentUrl + '/' + id)
+                      .map(response => response.json())
+                      .catch(error => Observable.throw(error.json.error || 'server error'));
+  }
 }
