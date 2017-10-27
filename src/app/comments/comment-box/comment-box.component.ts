@@ -9,7 +9,7 @@ import {CommentServiceService} from '../../comment-service.service';
 })
 export class CommentBoxComponent implements OnInit {
 
-   @Input() comment: Comment;
+   @Input() commentInput: Comment;
    @Input() listId: string;
    @Input() editId: string;
 

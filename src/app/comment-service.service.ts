@@ -13,7 +13,7 @@ export class CommentServiceService {
   constructor(private _http: Http) {}
 
 
-  getComments(): Observable<Comment> {
+  getComments(): Observable<Comment[]> {
     return this._http.get(this.commentUrl)
               .map(response => response.json())
               .catch(error => Observable.throw(error.json.error || 'serve error'));

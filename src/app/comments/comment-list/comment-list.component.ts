@@ -9,13 +9,14 @@ import {CommentServiceService} from '../../comment-service.service';
 })
 export class CommentListComponent implements OnInit {
 
-  comments: Comment[];
+  comments;
   constructor(private _commmentService: CommentServiceService) { }
 
   ngOnInit() {
      this._commmentService.getComments().subscribe(
        (response) => {
-          console.log(response);
+          this.comments = response;
+          console.log(this.comments[1].name);
        }
      );
   }
