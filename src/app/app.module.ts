@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Http, HttpModule} from '@angular/http';
-
+import { ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import {CommentServiceService} from './comment-service.service';
@@ -19,7 +19,8 @@ import { CommentListComponent } from './comments/comment-list/comment-list.compo
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
   providers: [CommentServiceService],
   bootstrap: [AppComponent]
