@@ -13,15 +13,29 @@ export class CommentBoxComponent implements OnInit {
    @Input() listId: string;
    @Input() editId: string;
 
+   myCount = 10;
+  @Output() change1: EventEmitter<number> = new EventEmitter<number>();
+
   constructor(private _commmentService: CommentServiceService) { }
 
   ngOnInit() {
   }
 
-   editComment(){
+   editComment() {
 
    }
-   deleteComment(id: string){
+   deleteComment(id: string) {
 
+   }
+
+
+   increment() {
+     this.myCount++;
+     this.change1.emit(this.myCount);
+
+
+   }
+   decrement() {
+    this.myCount--;
    }
 }
