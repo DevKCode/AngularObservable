@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import {CommentServiceService} from './comment-service.service';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentBoxComponent} from './comments/comment-box/comment-box.component';
+import { CommentFormComponent } from './comments/comment-form/comment-form.component';
+import { CommentListComponent } from './comments/comment-list/comment-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     CommentBoxComponent,
-    CommentsComponent
+    CommentsComponent,
+    CommentFormComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
