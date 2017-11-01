@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 
+import { CommentServiceService} from '../../comment-service.service';
+import {Comment} from '../../comment';
+
 @Component({
   selector: 'app-comment-form',
   templateUrl: './comment-form.component.html',
@@ -8,8 +11,9 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class CommentFormComponent implements OnInit {
   commentForm: FormGroup;
+  newComment: Comment;
 
-  constructor() { }
+  constructor(private _commentService: CommentServiceService) { }
 
   ngOnInit() {
     this.commentForm = new FormGroup({
@@ -18,8 +22,14 @@ export class CommentFormComponent implements OnInit {
     });
   }
   onsubmit() {
+       this.newComment = new Comment(1450, 450, this.commentForm.get('user').value, 'dev@g.lk',  this.commentForm.get('comment').value);
+      console.log('Rest submision');
+      this._commentService.postComments(this.newComment).subscribe(
+        (res: Response) => {
+          console.log(res);
+        }
+      );
 
-      console.log('Submitted ' + this.commentForm.get('user').value);
   }
 
 }

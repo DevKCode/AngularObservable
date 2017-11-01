@@ -16,6 +16,7 @@ export class CommentServiceService {
   getComments(): Observable<Comment[]> {
     return this._http.get(this.commentUrl)
               .map(response => response.json())
+              .take(5)
               .catch(error => Observable.throw(error.json.error || 'serve error'));
 
   }
@@ -24,7 +25,7 @@ export class CommentServiceService {
                  .map(response => response.json())
                  .catch(error => Observable.throw(error.json.error || 'server error'));
   }
-  deleteCommment(id: string) {
+  deleteCommment(id) {
     return this._http.delete(this.commentUrl + '/' + id)
                       .map(response => response.json())
                       .catch(error => Observable.throw(error.json.error || 'server error'));

@@ -12,6 +12,7 @@ export class CommentBoxComponent implements OnInit {
    @Input() commentInput: Comment;
    @Input() listId: string;
    @Input() editId: string;
+   @Output() emitClick: EventEmitter<number> = new EventEmitter<number>();
 
 
   constructor(private _commmentService: CommentServiceService) { }
@@ -19,12 +20,14 @@ export class CommentBoxComponent implements OnInit {
   ngOnInit() {
   }
 
-   editComment() {
+   editComment(id) {
+     console.log('edit comment' + id);
+     this.emitClick.emit(id);
+   }
+   deleteComment(id) {
 
    }
-   deleteComment(id: string) {
 
-   }
 
 
 }

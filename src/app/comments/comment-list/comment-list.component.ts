@@ -15,10 +15,19 @@ export class CommentListComponent implements OnInit {
   ngOnInit() {
      this._commmentService.getComments().subscribe(
        (response) => {
-          this.comments = response;
-          console.log(this.comments[1].name);
+          this.comments = response.slice(0, 3);
+
        }
      );
+  }
+
+  getClickedInfo(id) {
+ console.log('emitter value' + id);
+//  this._commmentService.deleteCommment(id).subscribe(
+//    (res: Response) => {
+//      console.log(res);
+//    }
+//  );
   }
 
 }
