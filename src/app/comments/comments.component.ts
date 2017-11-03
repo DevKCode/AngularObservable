@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsComponent implements OnInit {
 
+  commentId ;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getClicked(id) {
+    console.log('From Comments component ' + id);
+    this.commentId = id;
   }
 
 }

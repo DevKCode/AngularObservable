@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import {CommentServiceService} from '../../comment-service.service';
 
@@ -10,6 +10,7 @@ import {CommentServiceService} from '../../comment-service.service';
 export class CommentListComponent implements OnInit {
 
   comments;
+  @Output() getClickedComment: EventEmitter<number> = new EventEmitter<number>();
   constructor(private _commmentService: CommentServiceService) { }
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class CommentListComponent implements OnInit {
 
   getClickedInfo(id) {
  console.log('emitter value' + id);
+ this.getClickedComment.emit(id);
 //  this._commmentService.deleteCommment(id).subscribe(
 //    (res: Response) => {
 //      console.log(res);

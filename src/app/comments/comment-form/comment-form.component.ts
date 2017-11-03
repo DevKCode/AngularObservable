@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 import { CommentServiceService} from '../../comment-service.service';
@@ -9,7 +9,10 @@ import {Comment} from '../../comment';
   templateUrl: './comment-form.component.html',
   styleUrls: ['./comment-form.component.css']
 })
-export class CommentFormComponent implements OnInit {
+export class CommentFormComponent implements OnInit, OnChanges {
+
+  @Input() clickedId;
+  private _name;
   commentForm: FormGroup;
   newComment: Comment;
 
@@ -31,5 +34,18 @@ export class CommentFormComponent implements OnInit {
       );
 
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Current ' + changes.clickedId.currentValue);
+    console.log('Previou : ' + changes.clickedId.previousValue);
+      if (changes.clickedId.currentValue) {
+          console.log('edit mode');
+          this.commentForm = new FormGroup({
+            'user' : new FormControl('dev', [Validators.required]),
+            'comment': new FormControl('dev', [Validators.required])
+          });
+      }
+  }
+
 
 }

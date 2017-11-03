@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import {Comment} from '../../comment';
 import {CommentServiceService} from '../../comment-service.service';
+import {EmitterServiceService} from '../../emitter-service.service';
 @Component({
   selector: 'app-comment-box',
   templateUrl: './comment-box.component.html',
@@ -13,6 +14,7 @@ export class CommentBoxComponent implements OnInit {
    @Input() listId: string;
    @Input() editId: string;
    @Output() emitClick: EventEmitter<number> = new EventEmitter<number>();
+
 
 
   constructor(private _commmentService: CommentServiceService) { }
@@ -27,6 +29,7 @@ export class CommentBoxComponent implements OnInit {
    deleteComment(id) {
 
    }
+
 
 
 

@@ -1,5 +1,5 @@
 <div class="container-fluid">
 
 
-    <app-comment-box *ngFor="let record of comments" [commentInput]="record" (emitClick)="getClickedInfo($event)"></app-comment-box>
+    <app-comment-box *ngFor="let record of comments" [commentInput]="record" [listId]="record.id" (emitClick)="getClickedInfo($event)"></app-comment-box>
 </div>
