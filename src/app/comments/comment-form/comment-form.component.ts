@@ -15,6 +15,8 @@ export class CommentFormComponent implements OnInit, OnChanges {
   private _name;
   commentForm: FormGroup;
   newComment: Comment;
+  newClickedId;
+  editComment;
 
   constructor(private _commentService: CommentServiceService) { }
 
@@ -39,10 +41,17 @@ export class CommentFormComponent implements OnInit, OnChanges {
     console.log('Current ' + changes.clickedId.currentValue);
     console.log('Previou : ' + changes.clickedId.previousValue);
       if (changes.clickedId.currentValue) {
-          console.log('edit mode');
+         this.newClickedId = changes.clickedId.currentValue;
+        this._commentService.getComment(changes.clickedId.currentValue).subscribe(
+             (res) => {
+               this.editComment = res;
+               console.log(res);
+             }
+        );
+
           this.commentForm = new FormGroup({
-            'user' : new FormControl('dev', [Validators.required]),
-            'comment': new FormControl('dev', [Validators.required])
+            'user' : new FormControl(this.editComment.email, [Validators.required]),
+            'comment': new FormControl(this.editComment.body, [Validators.required])
           });
       }
   }

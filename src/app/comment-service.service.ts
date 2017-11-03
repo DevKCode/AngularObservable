@@ -20,6 +20,12 @@ export class CommentServiceService {
               .catch(error => Observable.throw(error.json.error || 'serve error'));
 
   }
+  getComment(id): Observable<any> {
+    return this._http.get(this.commentUrl + '/' + id)
+                .map(response => response.json())
+                .catch(error => Observable.throw(error.json.error || 'server error'));
+
+  }
   postComments(newComment: Comment) {
     return this._http.post(this.commentUrl, newComment)
                  .map(response => response.json())
